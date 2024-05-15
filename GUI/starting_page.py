@@ -16,7 +16,7 @@ class StartingPage(tk.Frame):
         framecent.grid_rowconfigure([0, 1, 2, 3, 4], weight=1)
 
         # dropdown for tfidf-bagofwords
-        self.label1 = tk.Label(framecent, text="Choose Method:", font=("Arial", 16))
+        self.label1 = tk.Label(framecent, text="Choose Pre-Process Technique:", font=("Arial", 16))
         self.label1.grid(row=0, column=0, pady=10, padx=20, sticky="ew")
         
         self.method = tk.StringVar()
@@ -26,17 +26,19 @@ class StartingPage(tk.Frame):
         
         # dropdown for methods 
         # NOTE : CHANGE THE NAMES OF BUTTONS
-        self.label2 = tk.Label(framecent, text="Choose Option:", font=("Arial", 16),)
+        self.label2 = tk.Label(framecent, text="Choose Classifier:", font=("Arial", 16),)
         self.label2.grid(row=2, column=0, pady=10, padx=20, sticky="ew")
         
         self.option = tk.StringVar()
-        self.dropdown = ttk.Combobox(framecent, textvariable=self.option, values=["1", "2", "3", "4", "5"], font=("Arial", 16), state="readonly")
+        self.dropdown = ttk.Combobox(framecent, textvariable=self.option, values=["Logistic Regression", "Naive Bayes"], font=("Arial", 16), state="readonly")
         self.dropdown.grid(row=3, column=0, pady=10, padx=20, sticky="ew")
-        self.dropdown.set("1")
+        self.dropdown.set("Logistic Regression")
         
         # continue button
         self.continuebutton = tk.Button(framecent, text="Continue", font=("Arial", 16), command=self.on_continue)
         self.continuebutton .grid(row=4, column=0, pady=20, padx=20, sticky="ew")
 
     def on_continue(self):
-        self.controller.show_frame("HelloApplication")
+        technique = self.method.get()  # Get pre-processing technique
+        classifier = self.option.get()  # Get classifier
+        self.controller.show_frame("HelloApplication", technique, classifier)
