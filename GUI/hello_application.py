@@ -7,6 +7,7 @@ class HelloApplication(tk.Frame):
         self.controller = controller
         print(f"HelloApplication controller: {self.controller}")  # Debug print
 
+        
         self.grid(row=0, column=0, sticky="nsew")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)

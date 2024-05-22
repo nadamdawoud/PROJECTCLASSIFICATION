@@ -6,7 +6,6 @@ class StartingPage(tk.Frame):
         super().__init__(parent)
         self.controller = controller
         print(f"StartingPage controller: {self.controller}")  # Debug print
-
         self.grid(row=0, column=0, sticky="nsew")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)

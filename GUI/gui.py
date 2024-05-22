@@ -1,14 +1,8 @@
 import tkinter as tk
 from starting_page import StartingPage
 from hello_application import HelloApplication
+import model_prediction
 
-
-import pickle
-
-with open('models.pkl', 'rb') as f:
-    models = pickle.load(f)
-
-    print(models)
 
 class MainApplication(tk.Tk):
     def __init__(self):
