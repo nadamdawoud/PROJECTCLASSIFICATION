@@ -19,6 +19,8 @@ cnb_bow = joblib.load('cnb_bow_model.pkl')
 # Load the Naive Bayes (TF-IDF) model
 cnb_tfidf = joblib.load('cnb_tfidf_model.pkl')
 
+svm = joblib.load('svm_model.pkl')
+
 features = joblib.load('features.pkl')
 
 vectorizer = joblib.load('vectorizer.pkl')
@@ -112,3 +114,8 @@ def predict_cnbtfidf(email):
     preprocessed_email = preprocess_text(email)
     email_vector = vectorizer.transform([preprocessed_email])
     return cnb_tfidf.predict(email_vector)
+
+def predict_svm(email):
+    preprocessed_email = preprocess_text(email)
+    email_vector = vectorizer.transform([preprocessed_email])
+    return svm.predict(email_vector)

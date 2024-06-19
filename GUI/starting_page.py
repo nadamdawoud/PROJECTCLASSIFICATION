@@ -28,7 +28,7 @@ class StartingPage(tk.Frame):
         self.label2.grid(row=2, column=0, pady=10, padx=20, sticky="ew")
         
         self.classvar = tk.StringVar()
-        self.dropdown2 = ttk.Combobox(frame, textvariable=self.classvar, values=["Logistic Regression", "Naive Bayes"], font=("Arial", 16), state='readonly')
+        self.dropdown2 = ttk.Combobox(frame, textvariable=self.classvar, values=["Logistic Regression", "Naive Bayes", "Support Vector Machine"], font=("Arial", 16), state='readonly')
         self.dropdown2.grid(row=3, column=0, pady=10, padx=20, sticky="ew")
         self.dropdown2.set("Choose")
         

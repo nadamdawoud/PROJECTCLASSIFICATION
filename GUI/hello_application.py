@@ -57,6 +57,8 @@ class HelloApplication(tk.Frame):
                 predic = mp.predict_lrtfidf(contentofemail)
             elif classf == "Naive Bayes":
                 predic = mp.predict_cnbtfidf(contentofemail)
+            elif classf == "Support Vector Machine":
+                predic = mp.predict_svm(contentofemail)
         
         result = "Spam" if predic == [1] else "Not Spam"
         messagebox.showinfo("Prediction Result", result)
