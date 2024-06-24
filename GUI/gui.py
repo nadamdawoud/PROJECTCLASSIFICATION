@@ -2,14 +2,6 @@ import tkinter as tk
 from starting_page import StartingPage
 from hello_application import HelloApplication
 
-
-import pickle
-
-with open('models.pkl', 'rb') as f:
-    models = pickle.load(f)
-
-    print(models)
-
 class MainApplication(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -19,7 +11,10 @@ class MainApplication(tk.Tk):
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        self.frames = {}  # Ensure this is a dictionary
+        self.frames = {}
+        self.method = None
+        self.classifier = None
+
         for F in (StartingPage, HelloApplication):
             page = F.__name__
             frame = F(parent=self, controller=self)

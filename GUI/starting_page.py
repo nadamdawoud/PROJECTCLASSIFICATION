@@ -5,8 +5,6 @@ class StartingPage(tk.Frame):
     def __init__(self, parent, controller):
         super().__init__(parent)
         self.controller = controller
-        print(f"StartingPage controller: {self.controller}")  # Debug print
-
         self.grid(row=0, column=0, sticky="nsew")
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
@@ -21,7 +19,7 @@ class StartingPage(tk.Frame):
         self.label1.grid(row=0, column=0, pady=10, padx=20, sticky="ew")
         
         self.varmethod = tk.StringVar()
-        self.drop1 = ttk.Combobox(frame, textvariable=self.varmethod, values=["Bag of Words", "TF-IDF"], font=("Arial", 16),state='readonly')
+        self.drop1 = ttk.Combobox(frame, textvariable=self.varmethod, values=["Bag of Words", "TF-IDF"], font=("Arial", 16), state='readonly')
         self.drop1.grid(row=1, column=0, pady=10, padx=20, sticky="ew")
         self.drop1.set("Choose")
         
@@ -30,7 +28,7 @@ class StartingPage(tk.Frame):
         self.label2.grid(row=2, column=0, pady=10, padx=20, sticky="ew")
         
         self.classvar = tk.StringVar()
-        self.dropdown2 = ttk.Combobox(frame, textvariable=self.classvar, values=["Logistic Regression","Naive Bayes"], font=("Arial", 16),state='readonly')
+        self.dropdown2 = ttk.Combobox(frame, textvariable=self.classvar, values=["Logistic Regression", "Naive Bayes", "Support Vector Machine"], font=("Arial", 16), state='readonly')
         self.dropdown2.grid(row=3, column=0, pady=10, padx=20, sticky="ew")
         self.dropdown2.set("Choose")
         
@@ -39,4 +37,7 @@ class StartingPage(tk.Frame):
         self.contbutton.grid(row=4, column=0, pady=20, padx=20, sticky="ew")
 
     def on_continue(self):
+        # Store selections in controller
+        self.controller.method = self.varmethod.get()
+        self.controller.classifier = self.classvar.get()
         self.controller.show_frame("HelloApplication")
